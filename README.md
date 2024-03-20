@@ -2,3 +2,4 @@
 ### [Lectures Playlist](https://www.youtube.com/playlist?list=PLhQjrBD2T3817j24-GogXmWqO5Q5vYy0V)
 
 [Slides, source code, and more.](https://cs50.harvard.edu/python)
+[Pyhton official documentation.](https://docs.python.org/3/)
