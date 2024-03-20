@@ -18,6 +18,7 @@
 - [Def](#def)
 - [Returning Values](#returning-values)
 - [Summing Up](#summing-up)
+<br>
 
 # Creating Code with Python
 - VS Code is a special type of text editor that is called a compiler. At the top, you’ll notice a text editor. At the bottom, you will see a terminal where you can execute commands.
@@ -28,18 +29,21 @@
 - Recall that computers really only understand zeros and ones. Therefore, when you run ```python hello.py```, python will interpret the text that you created in ```hello.py``` and translate it into the zeros and ones that the computer can understand.
 - The result of running the ```python hello.py``` program is ```hello, world```.
 - Congrats! You just created your first program.
+<br>
 
 # Functions
 - Functions are verbs or actions that the computer or computer language will already know how to perform.
 
 - In your ```hello.py``` program, the ```print``` function knows how to print to the terminal window.
 - The ```print``` function takes arguments. In this case, ```"hello, world"``` are the arguments that the ```print``` function takes.
+<br>
 
 # Bugs
 - Bugs are a natural part of coding. These are mistakes, problems for you to solve! Don’t get discouraged! This is part of the process of becoming a great programmer.
 
 - Imagine in our ```hello.py``` program that accidentally typed ```print("hello, world"``` notice that we missed the final ```)``` required by the compiler. If I purposefully make this mistake, you’ll the compiler will output an error in the terminal window!
 - Often, the error messages will inform you of your mistakes and provide you clues on how to fix them. However, there will be many times when the compiler is not this kind.
+<br>
 
 # Improving Your First Python Program
 - We can personalize your first Python program.
@@ -108,6 +112,7 @@ print("hello,")
 # Print the name inputted
 print(name)
 ```
+<br>
 
 # Further Improving Your First Python Program
 - We can further edit our code as follows:
@@ -129,6 +134,8 @@ name = input("What's your name? ")
 print("hello,", name)
 ```
 The output in the terminal, if we typed “David” we would be ```hello, David```. Success.
+<br>
+<br>
 
 # Strings and Paremeters
 - A string, known as a ```str``` in Python, is a sequence of text.
@@ -162,6 +169,7 @@ By providing ```end=""``` we are overwriting the default value of end such that 
 - ```print("hello,"friend"")``` will not work, and the compiler will throw an error.
 - Generally, there are two approaches to fixing this. First, you could simply change the quotes to single quotation marks.
 - Another, more commonly used approach would be code as ```print("hello, \"friend\"")```. The backslashes tell the compiler that the following character should be considered a quotation mark in the string and avoid a compiler error.
+<br>
 
 # Formatting Strings
 - Probably the most elegant way to use strings would be as follows:
@@ -171,6 +179,8 @@ name = input("What's your name? ")
 print(f"hello, {name}")
 ```
 Notice the ```f``` in ```print(f"hello, {name}")```. This ```f``` is a special indicator for Python to treat this string a special way, different than previous approaches we have illustrated in this lecture. Expect that you will be using this style of strings quite frequently in this course.
+<br>
+<br>
 
 # More on Strings
 - You should never expect your user to cooperate as intended. Therefore, you will need to ensure that the input of your user is corrected or checked.
@@ -227,6 +237,7 @@ name = input("What's your name? ").strip().title()
 print(f"hello, {name}")
 ```
 - You can learn more about strings in Python’s documentation on [```str```](https://docs.python.org/3/library/stdtypes.html#str)
+<br>
 
 # Integers or int
 - In Python, an integer is referred to as an ```int```.
@@ -275,11 +286,13 @@ print(x + y)
 This illustrates that you can run functions on functions. The inner function is run first, and then the outer one is run. First, the input function is run. Then, the int function.
 
 - You can learn more in Python’s documtenation of [```int```](https://docs.python.org/3/library/functions.html?highlight=float#int).
+<br>
 
 # Readability Wins
 - When deciding on your approach to a coding task, remember that one could make a reasonable argument for many approaches to the same problem.
 
 - Regardless of what approach you take to a programming task, remember that your code must be readable. You should use comments to give yourself and others clues about what your code is doing. Further, you should create code in a way that is readable.
+<br>
 
 # Float Basics
 - A floating point value is a real number that has a decimal point in it, such as ```0.52```.
@@ -320,6 +333,8 @@ z = round(x + y)
 print(f"{z:,}")
 ```
 Though quite cryptic, that ```print(f"{z:,}")``` creates a scenario where the outputted z will include commas where the result could look like ```1,000``` or ```2,500```.
+<br>
+<br>
 
 # More on Floats
 - How can we round floating point values? First, modify your code as follows:
@@ -365,6 +380,7 @@ print(f"{z:.2f}")
 This cryptic ```fstring``` code displays the same as our prior rounding strategy.
 
 - You can learn more in Python’s documentation of [```float```](https://docs.python.org/3/library/functions.html?highlight=float#float).
+<br>
 
 # Def
 - Wouldn’t it be nice to create our own functions?
@@ -459,6 +475,8 @@ def hello(to="world"):
 
 main()
 ```
+<br>
+
 # Returning Values
 - You can imagine many scenarios where you don’t just want a function to perform an action but also to return a value back to the main function. For example, rather than simply printing the calculation of ```x + y```, you may want a function to return the value of this calculation back to another part of your program. This “passing back” of a value we call a ```return``` value.
 
@@ -475,6 +493,8 @@ def square(n):
 main()
 ```
 Effectively, ```x``` is passed to ```square```. Then, the calculation of ```x * x``` is returned back to the ```main``` function.
+<br>
+<br>
 
 # Summing Up
 Through the work of this single lecture, you have learned abilities that you will use countless times in your own programs. You have learned about…
