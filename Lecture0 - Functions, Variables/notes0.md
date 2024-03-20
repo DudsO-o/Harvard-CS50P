@@ -1,4 +1,4 @@
-# Lecture 0
+# [Lecture 0](https://cs50.harvard.edu/python/2022/notes/0/)
 - [Creating Code with Python](#creating-code-with-python)
 - [Functions](#functions)
 - [Bugs](#bugs)
