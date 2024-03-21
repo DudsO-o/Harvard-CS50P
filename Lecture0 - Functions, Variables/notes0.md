@@ -1,4 +1,4 @@
-# [Lecture 0](https://youtu.be/JP7ITIXGpHk?si=o2rKiB72Xby5SOD5)
+# [Lecture 0 - Functions, Variables](https://youtu.be/JP7ITIXGpHk?si=o2rKiB72Xby5SOD5)
 - [Creating Code with Python](#creating-code-with-python)
 - [Functions](#functions)
 - [Bugs](#bugs)
