@@ -340,12 +340,12 @@ Notice, the use of the single vertical bar ```|```. Much like the ```or``` keywo
 # Summing Up
 You now have the power within Python to use conditional statements to ask questions and have your program take action accordingly. In this lecture, we discussed…
 
-Conditionals;
-if Statements;
-Control flow, elif, and else;
-or;
-and;
-Modulo;
-Creating your own function;
-Pythonic coding;
-and match.
+- Conditionals;
+- ```if``` Statements;
+- Control flow, ```elif```, and ```else```;
+- ```or```;
+- ```and```;
+- Modulo;
+- Creating your own function;
+- Pythonic coding;
+- and ```match```.
