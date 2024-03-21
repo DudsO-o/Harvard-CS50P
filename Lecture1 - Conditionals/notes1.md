@@ -21,6 +21,7 @@
 - ```==``` denotes “equals, though do notice the double equal sign! A single equal sign would assign a value. Double equal signs are used to compare variables.
 - ```!=``` denotes “not equal to.
 - Conditional statements compare a left-hand term to a right-hand term.
+<br>
 
 # if Statements
 - In your terminal window, type ```code compare.py```. This will create a brand new file called “compare.”
