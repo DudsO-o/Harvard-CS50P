@@ -40,3 +40,29 @@ Notice that by including the ```f```, we tell Python to interpolate what is in t
 <br>
 
 # ```try```
+- In Python ```try``` and ```except``` are ways of testing out user input before something goes wrong. Modify your code as follows:
+```
+try:
+    x = int(input("What's x?"))
+    print(f"x is {x}")
+except ValueError:
+    print("x is not an integer")
+```
+Notice how, running this code, inputting ```50``` will be accepted. However, typing in ```cat``` will produce an error visible to the user, instructing them why their input was not accepted.
+
+- This is still not the best way to implement this code. Notice that we are trying to do two lines of code. For best practice, we should only ```try``` the fewest lines of code possible that we are concerned could fail. Adjust your code as follows:
+```
+try:
+    x = int(input("What's x?"))
+except ValueError:
+    print("x is not an integer")
+
+print(f"x is {x}")
+```
+Notice that while this accomplishes our goal of trying as few lines as possible, we now face a new error! We face a ```NameError``` where ```x is not defined```. Look at this code and consider: Why is x not defined in some cases?
+
+- Indeed, if you examine the order of operations in ```x = int(input("What's x?"))```, working right to left, it could take an incorrectly inputted character and attempt to assign it as an integer. If this fails, the assignment of the value of ```x``` never occurs. Therefore, there is no x to print on our final line of code.
+<br>
+<br>
+
+# ```else```
