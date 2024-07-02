@@ -1,4 +1,4 @@
-# [Lecture 4 - Libraries]()
+# [Lecture 4 - Libraries](https://youtu.be/MztLZWibctI?si=a71ygxjDnyMuf1gS)
 - [Libraries](#libraries)
 - [Random](#random)
 - [Statistics](#statistics)
@@ -92,3 +92,13 @@ Notice that we imported a different library called statistics. The mean function
 - ```sys``` is a module that allows us to take arguments at the command line.
   
 - ```argv``` is a function within the ```sys``` module that allows us to learn about what the user typed in at the command line. Notice how you will see ```sys.argv``` utilized in the code below. In the terminal window, type ```code name.py```. In the text editor, code as follows:
+````
+import sys
+
+print("hello, my name is", sys.argv[1])
+```
+Notice that the program is going to look at what the user typed in the command line. Currently, if you type ```python name.py David``` into the terminal window, you will see ```hello, my name is David```. Notice that ```sys.argv[1]``` is where ```David``` is being stored. Why is that? Well, in prior lessons, you might remember that lists start at the ```0```th element. What do you think is held currently in ```sys.argv[0]```? If you guessed ```name.py````, you would be correct!
+
+- There is a small problem with our program as it stands. What if the user does not type in the name at the command line? Try it yourself. Type python name.py into the terminal window. An error list index out of range will be presented by the compiler. The reason for this is that there is nothing at sys.argv[1] because nothing was typed! Here’s how we can protect our program from this type of error:
+
+
