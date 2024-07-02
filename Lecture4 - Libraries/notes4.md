@@ -92,13 +92,217 @@ Notice that we imported a different library called statistics. The mean function
 - ```sys``` is a module that allows us to take arguments at the command line.
   
 - ```argv``` is a function within the ```sys``` module that allows us to learn about what the user typed in at the command line. Notice how you will see ```sys.argv``` utilized in the code below. In the terminal window, type ```code name.py```. In the text editor, code as follows:
-````
+```
 import sys
 
 print("hello, my name is", sys.argv[1])
 ```
-Notice that the program is going to look at what the user typed in the command line. Currently, if you type ```python name.py David``` into the terminal window, you will see ```hello, my name is David```. Notice that ```sys.argv[1]``` is where ```David``` is being stored. Why is that? Well, in prior lessons, you might remember that lists start at the ```0```th element. What do you think is held currently in ```sys.argv[0]```? If you guessed ```name.py````, you would be correct!
+Notice that the program is going to look at what the user typed in the command line. Currently, if you type ```python name.py David``` into the terminal window, you will see ```hello, my name is David```. Notice that ```sys.argv[1]``` is where ```David``` is being stored. Why is that? Well, in prior lessons, you might remember that lists start at the ```0```th element. What do you think is held currently in ```sys.argv[0]```? If you guessed ```name.py```, you would be correct!
 
-- There is a small problem with our program as it stands. What if the user does not type in the name at the command line? Try it yourself. Type python name.py into the terminal window. An error list index out of range will be presented by the compiler. The reason for this is that there is nothing at sys.argv[1] because nothing was typed! Here’s how we can protect our program from this type of error:
+- There is a small problem with our program as it stands. What if the user does not type in the name at the command line? Try it yourself. Type ```python name.py``` into the terminal window. An error ```list index out of range``` will be presented by the compiler. The reason for this is that there is nothing at ```sys.argv[1]``` because nothing was typed! Here’s how we can protect our program from this type of error:
+```
+import sys
+
+try:
+    print("hello, my name is", sys.argv[1])
+except IndexError:
+    print("Too few arguments")
+```
+Notice that the user will now be prompted with a useful hint about how to make the program work if they forget to type in a name. However, could we be more defensive to ensure the user inputs the right values?
+
+- Our program can be improved as follows:
+```
+import sys
+
+if len(sys.argv) < 2:
+    print("Too few arguments")
+elif len(sys.argv) > 2:
+    print("Too many arguments")
+else:
+    print("hello, my name is", sys.argv[1])
+```
+Notice how if you test your code, you will see how these exceptions are handled, providing the user with more refined advice. Even if the user types in too many or too few arguments, the user is provided clear instructions about how to fix the issue.
+
+- Right now, our code is logically correct. However, there is something very nice about keeping our error checking separate from the remainder of our code. How could we separate out our error handling? Modify your code as follows:
+```
+import sys
+
+if len(sys.argv) < 2:
+    sys.exit("Too few arguments")
+elif len(sys.argv) > 2:
+    sys.exit("Too many arguments")
+
+print("hello, my name is", sys.argv[1])
+```
+Notice how we are using a built-in function of ```sys``` called ```exit``` that allows us to exit the program if an error was introduced by the user. We can rest assured now that the program will never execute the final line of code and trigger an error. Therefore, ```sys.argv``` provides a way by which users can introduce information from the command line. ```sys.exit``` provides a means by which the program can exit if an error arises.
+
+- You can learn more in Python’s documentation of [```sys```](https://docs.python.org/3/library/sys.html).
+<br>
+
+# ```slice```
+- ```slice``` is a command that allows us to take a ```list``` and tell the compiler where we want the compiler to consider the start of the ```list``` and the end of the ```list```. For example, modify your code as follows:
+```
+import sys
+
+if len(sys.argv) < 2:
+    sys.exit("Too few arguments")
+
+for arg in sys.argv:
+    print("hello, my name is", arg)
+```
+Notice that if you type ```python name.py David Carter Rongxin``` into the terminal window, the compiler will output not just the intended output of the names, but also ```hello, my name is name.py```. How then could we ensure that the compiler ignores the first element of the list where ```name.py``` is currently being stored?
+
+- ```slice``` can be employed in our code to start the list somewhere different! Modify your code as follows:
+```
+import sys
+
+if len(sys.argv) < 2:
+    sys.exit("Too few arguments")
+
+for arg in sys.argv[1:]:
+    print("hello, my name is", arg)
+```
+Notice that rather than starting the list at ```0```, we use square brackets to tell the compiler to start at ```1``` and go to the end using the ```1:``` argument. Running this code, you’ll notice that we can improve our code using relatively simple syntax.
+<br>
+<br>
+
+# Packages
+- One of the reasons Python is so popular is that there are numerous powerful third-party libraries that add functionality. We call these third-party libraries, implemented as a folder, “packages”.
+
+- PyPI is a repository or directory of all available third-party packages currently available.
+
+- ```cowsay``` is a well-known package that allows a cow to talk to the user.
+
+- Python has a package manager called ```pip``` that allows you to install packages quickly onto your system.
+
+- In the terminal window, you can install the ```cowsay``` package by typing ```pip install cowsay```. After a bit of output, you can now go about using this package in your code.
+
+- In your terminal window type ```code say.py```. In the text editor, code as follows:
+```
+import cowsay
+import sys
+
+if len(sys.argv) == 2:
+    cowsay.cow("hello, " + sys.argv[1])
+```
+Notice that the program first checks that the user inputted at least two arguments at the command line. Then, the cow should speak to the user. Type ```python say.py David``` and you’ll see a cow saying “hello” to David.
+
+- Further modify your code:
+```
+import cowsay
+import sys
+
+if len(sys.argv) == 2:
+    cowsay.trex("hello, " + sys.argv[1])
+```
+Notice that a t-rex is now saying “hello”.
+
+- You now can see how you could install third-party packages.
+
+- You can learn more on PyPI’s entry for [```cowsay```](https://pypi.org/project/cowsay/).
+
+- You can find other third-party packages at [```PyPI```](https://pypi.org/).
+<br>
+
+# APIs
+- APIs or “application program interfaces” allow you to connect to the code of others.
+
+- ```requests``` is a package that allows your program to behave as a web browser would.
+
+- In your terminal, type ```pip install requests```. Then, type ```code itunes.py```.
+
+- It turns out that Apple iTunes has its own API that you can access in your programs. In your internet browser, you can visit https://itunes.apple.com/search?entity=song&limit=1&term=weezer and a text file will be downloaded. David constructed this URL by reading Apple’s API documentation. 
+
+- Notice how this query is looking for a ```song```, with a ```limit``` of one result, that relates to the term called ``weezer```. Looking at this text file that is downloaded, you might find the format to be similar to that we’ve programmed previously in Python.
+
+- The format in the downloaded text file is called JSON, a text-based format that is used to exchange text-based data between applications. Literally, Apple is providing a JSON file that we could interpret in our own Python program.
+
+- In the terminal window, type ```code itunes.py```. Code as follows:
+```
+import requests
+import sys
+
+if len(sys.argv) != 2:
+    sys.exit()
+
+response = requests.get("https://itunes.apple.com/search?entity=song&limit=1&term=" + sys.argv[1])
+print(response.json())
+```
+Notice how the returned value of ```requests.get``` will be stored in ```response```. David, having read the Apple documentation about this API, knows that what is returned is a JSON file. Running ```python itunes.py weezer```, you will see the JSON file returned by Apple. However, the JSON response is converted by Python into a dictionary. Looking at the output, it can be quite dizzying!
+
+- It turns out that Python has a built-in JSON library that can help us interpret the data received. Modify your code as follows:
+```
+import json
+import requests
+import sys
+
+if len(sys.argv) != 2:
+    sys.exit()
+
+response = requests.get("https://itunes.apple.com/search?entity=song&limit=1&term=" + sys.argv[1])
+print(json.dumps(response.json(), indent=2))
+```
+Notice that ```json.dumps``` is implemented such that it utilizes ```indent``` to make the output more readable. Running ```python itunes.py weezer```, you will see the same JSON file. However, this time, it is much more readable. Notice now that you will see a dictionary called ```results``` inside the output. Inside that dictionary called ```results``` there are numerous keys present. Look at the ```trackName``` value in the output. What track name do you see in your results?
+
+- How could we simply output the name of just that track name? Modify your code as follows:
+```
+import json
+import requests
+import sys
+
+if len(sys.argv) != 2:
+    sys.exit()
+
+response = requests.get("https://itunes.apple.com/search?entity=song&limit=50&term=" + sys.argv[1])
+
+o = response.json()
+for result in o["results"]:
+    print(result["trackName"])
+```
+Notice how we are taking the result of ```response.json()``` and storing it in ```o``` (as in the lowercase letter). Then, we are iterating through the results in ```o``` and printing each ```trackName```. Also notice how we have increased the limit number of results to 50. Run your program. See the results.
+
+- You can learn more about ```requests``` through the [library’s documentation](https://docs.python-requests.org/).
+
+- You can learn more about JSON in Python’s documentation of [JSON](https://docs.python.org/3/library/json.html).
+<br>
+
+# Making Your Own Libraries
+- You have the ability as a Python programmer to create your own library!
+
+- Imagine situations where you may want to re-use bits of code time and time again or even share them with others!
+
+- We have been writing lots of code to say “hello” so far in this course. Let’s create a package to allow us to say “hello” and “goodbye”. In your terminal window, type ```code sayings.py```. In the text editor, code as follows:
+```
+def hello(name):
+    print(f"hello, {name}")
 
 
+def goodbye(name):
+    print(f"goodbye, {name}")
+```
+Notice that this code in and of itself does not do anything for the user. However, if a programmer were to import this package into their own program, the abilities created by the functions above could be implemented in their code.
+
+- Let’s see how we could implement code utilizing this package that we created. In the terminal window, type ```code say.py```. In this new file in your text editor, type the following:
+```
+import sys
+
+from sayings import goodbye
+
+if len(sys.argv) == 2:
+    goodbye(sys.argv[1])
+```
+Notice that this code imports the abilities of ```goodbye``` from the ```sayings``` package. If the user inputed at least two arguments at the command line, it will say “goodbye” along with the string inputed at the command line.
+<br>
+<br>
+
+# Summing Up
+Libraries extend the abilities of Python. Some libraries are included by default with Python and simply need to be imported. Others are third-party packages that need to be installed using ```pip```. You can make your own packages for use by yourself or others! In this lecture, you learned about…
+
+- Libraries
+- Random
+- Statistics
+- Command-Line Arguments
+- Slice
+- Packages
+- APIs
+- Making Your Own Libraries
